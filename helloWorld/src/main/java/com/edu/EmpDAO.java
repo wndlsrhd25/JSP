@@ -6,35 +6,39 @@ import java.util.List;
 
 public class EmpDAO extends DAO {
 	
-	public void updateMember(String name, String pass, String role) {
-		String sql = "update members set member_password = ?, member_role= ? where member_id = ?";
-		connect();
+	public int updateMember(String name, String pass, String role) {
+		int r=0;
 		try {
+			connect();
+			String sql = "update members set member_password = ?, member_role= ? where member_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pass);
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r+"건 수정됨.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return r;
 	}
 
 	//USER_NAME, USER_PASS, ROLE => 입력
-	public void insertMember(String name, String pass, String role) {
+	public int insertMember(String name, String pass, String role) {
 		String sql = "insert into members values(?,?,?)";
 		connect();
+		int r=0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, pass);
 			pstmt.setString(3,role);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
+			
 			System.out.println(r+"건 입력됨.");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -42,6 +46,7 @@ public class EmpDAO extends DAO {
 		}finally {
 			disconnect();
 		}
+		return r;
 		
 	}
 	

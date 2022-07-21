@@ -1,6 +1,7 @@
 package com.edu;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,10 +22,45 @@ public class AddMemberServ extends HttpServlet {
 		//get : 수정, post :입력
 		EmpDAO dao = new EmpDAO();
 		if(req.getMethod().toUpperCase().equals("GET")){
-			dao.updateMember(name, pass, role);
-		} else {
-			dao.insertMember(name, pass, role);
+//			dao.updateMember(name, pass, role);
 			
+			//수정하기
+			int up =dao.updateMember(name, pass, role);
+			 
+			if(up<1) {
+				resp.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script>alert('계정 수정이 실패했습니다'); "
+						+ "</script>");
+				out.flush();
+				
+			}else {
+				resp.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script>alert('계정 수정이 성공했습니다'); "
+						+ "</script>");
+				out.flush();
+			}
+		} else {
+//			dao.insertMember(name, pass, role);
+			//입력하기
+			int in =dao.insertMember(name, pass, role);
+			 
+			if(in<1) {
+				resp.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script>alert('계정 등록이 실패했습니다'); "
+						+ "</script>");
+				out.flush();
+				
+			}else {
+				resp.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = resp.getWriter();
+				out.println("<script>alert('계정 등록이 성공했습니다'); "
+						+ "</script>");
+				out.flush();
+			}
+		
 		}
 		
 		resp.getWriter().print("Completed");
