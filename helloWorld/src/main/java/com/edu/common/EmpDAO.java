@@ -1,4 +1,4 @@
-package com.edu;
+package com.edu.common;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class EmpDAO extends DAO {
 	}
 
 	//USER_NAME, USER_PASS, ROLE => 입력
-	public int insertMember(String name, String pass, String role) {
+	public boolean insertMember(String name, String pass, String role) {
 		String sql = "insert into members values(?,?,?)";
 		connect();
 		int r=0;
@@ -40,13 +40,16 @@ public class EmpDAO extends DAO {
 			r = pstmt.executeUpdate();
 			
 			System.out.println(r+"건 입력됨.");
+			if(r>0) {
+				return true;
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}finally {
 			disconnect();
 		}
-		return r;
+		return false;
 		
 	}
 	

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.common.EmpDAO;
+
 @WebServlet("/addMember")
 public class AddMemberServ extends HttpServlet {
 
@@ -33,6 +35,7 @@ public class AddMemberServ extends HttpServlet {
 				out.println("<script>alert('계정 수정이 실패했습니다'); "
 						+ "</script>");
 				out.flush();
+				resp.getWriter().print("failed");
 				
 			}else {
 				resp.setContentType("text/html; charset=UTF-8");
@@ -40,18 +43,20 @@ public class AddMemberServ extends HttpServlet {
 				out.println("<script>alert('계정 수정이 성공했습니다'); "
 						+ "</script>");
 				out.flush();
+				resp.getWriter().print("Completed");
 			}
 		} else {
 //			dao.insertMember(name, pass, role);
 			//입력하기
-			int in =dao.insertMember(name, pass, role);
+			boolean isTrue =dao.insertMember(name, pass, role);
 			 
-			if(in<1) {
+			if(isTrue=false) {
 				resp.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = resp.getWriter();
 				out.println("<script>alert('계정 등록이 실패했습니다'); "
 						+ "</script>");
 				out.flush();
+				resp.getWriter().print("failed");
 				
 			}else {
 				resp.setContentType("text/html; charset=UTF-8");
@@ -59,11 +64,12 @@ public class AddMemberServ extends HttpServlet {
 				out.println("<script>alert('계정 등록이 성공했습니다'); "
 						+ "</script>");
 				out.flush();
+				resp.getWriter().print("Completed");
 			}
 		
 		}
 		
-		resp.getWriter().print("Completed");
+	
 		
 	}
 }
