@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>html/selectMmeber.html</title>
+  </head>
+  <body>
+    <h3>유저 찾기</h3>
+    <form action="../selectMember">
+      검색 : <input type="text" name="select" /><br />
+      <input type="submit" value="send" />
+    </form>
+    <script>
+      //연습예제-selectMmeber
+
+      let form = document.querySelector("form");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let select = document.querySelector('input[name="select"]').value;
+
+        if (select == "") {
+          alert("검색어를 입력하세요");
+          return;
+        }
+        //여기서 this는 자스에서 작업한걸 form에 전송한다는 것
+        this.submit();
+      });
+    </script>
+  </body>
+</html>

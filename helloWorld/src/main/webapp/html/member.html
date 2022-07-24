@@ -34,18 +34,25 @@
 
     </form>
     <script>
+    
       console.log(decodeURI('%EB%85%B8%ED%98%9C%EC%A3%BC'));
       console.log(encodeURI("노혜주"));
 
 
       let str = "id=user9&pwd=9999&name=노혜주&hobby=climbing&hobby=sport&hobby=reading&hobby=traveling&gender=female&religion=buddhism&introduction=%ED%95%98%EC%9D%B4%ED%95%98%EC%9D%B4";
+      
       let result = getParameter(str, 'hobby');
       console.log(result)
 
+      
+      //querystring(=str) 은 파라메터를 검색할 문자열을 뜻하고 param(=hobby) 그 검색할 파라미터 이름 
       function getParameter(querystring, param) {
+    	  //1. 우선 &단위로 분해시킴, split 결과는 배열
         let paramList = querystring.split('&');
+    	  //2.
         let result =[];
         for(let prm of paramList){
+        	//indexof는 파라미터단어가 시작하는 첫번째 위치를 반환
           let idx = prm.indexOf(param);
           if(idx !=-1){
             result.push(prm.substring(param.length +1))
@@ -59,7 +66,6 @@
       String.prototype.getParameter = function(){
         console.log(this);
       }
-
 
 
     </script>

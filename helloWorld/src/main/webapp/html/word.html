@@ -1,67 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>word.html</title>
-  <style>
-    #show {
-      width : 350px;
-      height: 350px;
-      background-color: rgb(238, 230, 175);
-    }
-
-    #show > span {
-      display: inline-block;
-      width: 100px;
-      height: 25px;
-      background-color: rgb(75, 166, 135);
-      border: 1px solid rgb(238, 230, 175);
-      padding: 2px;
-      margin: 2px;
-    }
-  </style>
-</head>
-<body>
-  <input type="text" name="userInput" id="userInput">
-  <div id = "show"> </div>
-<script>
-  let words = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat placeat corrupti, deleniti id dignissimos quisquam provident expedita neque quam ut consequatur cupiditate eaque at molestiae soluta et dolor esse?
-`;
-let wordList = words.split(' ');
-let show = document.getElementById('show');
-for(let word of wordList){
-  let span = document.createElement('span');
-  span.innerText = word; // <span>Lorem</span>
-  show.append(span);
-
-}
-
-//userInput : change 
-  // document.querySelector('#show>span:nth-child(2)').style.display = 'none';
-
-const remove = document.querySelector("#userInput");
-remove.addEventListener('change',deleteWord);
-
-function deleteWord(){
-  let index;
-  for(let i=0; i<wordList.length; i++){
-    if(remove.value == wordList[i]){
-      wordList.splice(i,1);
-      show.innerHTML = "";
-      for(let word of wordList){
-        let span =document.createElement("span");
-        span.innerText = word;
-        show.append(span);
-      } 
-      return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>word.html</title>
+    <style>
+      .time-container {
+        color: red;
+        font-size: 25px;
       }
-  }
-}
 
-</script>
+      #show {
+        width: 350px;
+        height: 415px;
+        background-color: rgb(238, 230, 175);
+      }
 
-  
-</body>
+      #show > span {
+        display: inline-block;
+        width: 100px;
+        height: 25px;
+        background-color: rgb(75, 166, 135);
+        border: 1px solid rgb(238, 230, 175);
+        padding: 2px;
+        margin: 5px;
+      }
+      #wrapper {
+        width: 500px;
+        height: 200px;
+        padding-top: 20px;
+        text-align: center;
+        border: 1px solid rgb(168, 168, 168);
+      }
+
+      #userInput {
+        margin: 10px auto;
+        width: 180px;
+        height: 20px;
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      .min {
+        width: 80px;
+        height: 20px;
+        border: 1px solid rgb(0, 0, 0);
+        text-align: center;
+      }
+      .sec {
+        width: 80px;
+        height: 20px;
+        border: 1px solid rgb(0, 0, 0);
+        text-align: center;
+      }
+
+      input[type="button"] {
+        width: 60px;
+        height: 40px;
+        border-radius: 10%;
+      }
+      .remaining {
+        height: 50px;
+        font-size: 34px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form>
+        제한시간
+        <label><input type="text" id="time" /></label>
+        <input
+          type="button"
+          value="START"
+          class="start-bt"
+          onclick="startTimer()"
+        />
+        <input
+          type="button"
+          value="RESET"
+          class="reset-bt"
+          onclick="resetTimer()"
+        />
+        <br />
+      </form>
+    </div>
+    <div id="display" class="remaining"></div>
+
+    삭제단어 <input type="text" name="userInput" id="userInput" />
+
+    <div id="show"></div>
+
+    <script>
+      const words = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, minus! Quibusdam molestias officia eius delectus quos ipsam sit similique rerum corporis obcaecati laboriosam corrupti, voluptatem consequatur, ea veritatis, dolore minima?`;
+      let wordList = words.split(" ");
+      let show = document.getElementById("show");
+      for (let word of wordList) {
+        let span = document.createElement("span");
+        span.innerText = word; // <span>Lorem</span>
+        show.append(span);
+      }
+
+      console.log(show);
+      document.querySelector("#show>span:nth-child(2)").style.display = "none";
+
+      let remove = document.querySelector("#userInput");
+      //userInput : change
+      remove.addEventListener("change", deleteWord);
+
+      function deleteWord() {
+        let sps = document.querySelectorAll("span");
+        for (let s of sps) {
+          if (s.innerText == remove.value) {
+            s.remove();
+            remove.value = "";
+            retun;
+          }
+        }
+      }
+
+      let time;
+      let timer;
+
+      function startTimer() {
+        time = document.querySelector("#time").value;
+        timer = setInterval(countTimer, 1000);
+      }
+
+      function countTimer() {
+        if (time === 0) {
+          clearTimer();
+          alert("GAME OVER");
+        } else {
+          time--;
+          document.querySelector("#display").innerText = `${time}`;
+        }
+      }
+
+      function resetTimer() {
+        clearTimer(timer);
+      }
+
+      function clearTimer(t) {
+        window.location.reload();
+      }
+
+      // function deleteWord() {
+      //   let index;
+      //   for (let i = 0; i < wordList.length; i++) {
+      //     if (remove.value == wordList[i]) {
+      //       wordList.splice(i, 1);
+      //       show.innerHTML = "";
+      //       for (let word of wordList) {
+      //         let span = document.createElement("span");
+      //         span.innerText = word;
+      //         show.append(span);
+      //       }
+      //       return;
+      //     }
+      //   }
+      // }
+    </script>
+  </body>
 </html>

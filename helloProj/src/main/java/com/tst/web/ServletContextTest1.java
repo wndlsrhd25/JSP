@@ -22,6 +22,7 @@ public class ServletContextTest1 extends HttpServlet {
 
 	}
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -30,7 +31,7 @@ public class ServletContextTest1 extends HttpServlet {
 		
 
 		String con = sc.getInitParameter("contextConfig");
-		resp.getWriter().print("Location: " + con);
+		resp.getWriter().print("\nLocation: " + con);
 	}
 	
 	@Override

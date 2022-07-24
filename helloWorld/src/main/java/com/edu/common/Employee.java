@@ -1,12 +1,14 @@
 package com.edu.common;
 
+import java.sql.Date;
+
 public class Employee {
 	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private int salary;
-	private String hireDate;
+	private Date hireDate;
 	private String jobId;
 	
 	public String getJobId() {
@@ -45,10 +47,10 @@ public class Employee {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public String getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
-	public void setHireDate(String hireDate) {
+	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
 	

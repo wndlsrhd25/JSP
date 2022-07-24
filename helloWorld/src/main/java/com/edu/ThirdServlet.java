@@ -21,6 +21,7 @@ public class ThirdServlet extends HttpServlet {
 		String value = req.getParameter("key");
 		resp.setContentType("text/html;charset=UTF-8");
 		EmpDAO dao = new EmpDAO();
+		//kvalue값만 출력
 		List<Employee> list = dao.getEmpInfo(value);
 		
 		PrintWriter out = resp.getWriter();

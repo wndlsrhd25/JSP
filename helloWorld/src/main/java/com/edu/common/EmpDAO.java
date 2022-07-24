@@ -53,6 +53,7 @@ public class EmpDAO extends DAO {
 		
 	}
 	
+	
 	public List<Employee> getEmpInfo(String name) {
 		String sql = "select * from employees where first_name =?";
 		connect(); // conn 객체를 만들어줌
@@ -88,9 +89,9 @@ public class EmpDAO extends DAO {
 	 */
 	
 	public List<Employee> getEmpList(){
-		connect();
 		List<Employee> list = new ArrayList<>();
 		try {
+			connect();
 			String sql = "select employee_id, first_name,email,hire_date,salary,job_id from employees";
 			pstmt = conn.prepareStatement(sql);
 			rs= pstmt.executeQuery(sql);
@@ -99,8 +100,8 @@ public class EmpDAO extends DAO {
 				Employee emp = new Employee();
 				emp.setEmployeeId(rs.getInt("employee_id"));
 				emp.setFirstName(rs.getString("first_name"));
-				emp.setHireDate(rs.getString("hire_date"));
 				emp.setEmail(rs.getString("email"));
+				emp.setHireDate(rs.getDate("hire_date"));
 				emp.setSalary(rs.getInt("salary"));
 				emp.setJobId(rs.getString("job_id"));
 
@@ -112,5 +113,40 @@ public class EmpDAO extends DAO {
 			disconnect();
 		} return list;
 	} 
+	
+	
+
+	public List<Employee> selectEmail(String email) {
+		List<Employee> list = new ArrayList<>();
+		try {
+			connect(); // conn 객체를 만들어줌
+			String sql = "select * from employees where email like '%"+email+"%'";
+			stmt = conn.createStatement();
+			rs=stmt.executeQuery(sql);
+
+			// rs.next()->한건을 가지고 오겠습니다.
+			while (rs.next()) {
+				Employee emp = new Employee();
+				emp.setEmployeeId(rs.getInt("employee_id"));
+				emp.setFirstName(rs.getString("first_name"));
+				emp.setHireDate(rs.getDate("hire_date"));
+				emp.setEmail(rs.getString("email"));
+				emp.setSalary(rs.getInt("salary"));
+				emp.setJobId(rs.getString("job_id"));
+
+				list.add(emp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list;
+	}
+	
+	
+
+	
+	
 	
 }

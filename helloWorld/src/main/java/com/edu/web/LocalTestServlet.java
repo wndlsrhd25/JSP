@@ -11,14 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/local")
 public class LocalTestServlet extends HttpServlet {
+	
 	 String str;
+	 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		str =req.getParameter("msg"); 
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
-		out.print("<h2>처리결과(지역변수)</h2>");
+		out.print("<h2>처리결과(전역변수)</h2>");
 		
 		int num = 0;
 		while(num++ <10) {

@@ -22,7 +22,9 @@
 let form = document.querySelector('form');
 
 form.addEventListener('submit',function(e){
+	//자동으로 서블릿 페이지 넘어가는걸 막음
 	e.preventDefault();
+	
 	let name = document.querySelector('input[name="user_name"]').value;
 	let pass = document.querySelector('input[name="user_pass"]').value;
 	let role = document.querySelector('select[name="role"]').value;
@@ -30,9 +32,12 @@ form.addEventListener('submit',function(e){
 		alert("값을 입력하세요");
 		return;
 	}
+	
+	//이벤트가 발생한 위치(this)
 	this.submit();
 
 })
+
 console.log(form);
 
 

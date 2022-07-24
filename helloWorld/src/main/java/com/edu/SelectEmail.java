@@ -13,18 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.edu.common.EmpDAO;
 import com.edu.common.Employee;
 
-@WebServlet("/EmpListServlet.do")
-public class EmpListServlet extends HttpServlet {
+@WebServlet("/selectEmail")
+public class SelectEmail extends HttpServlet{
+//연습한 예제 - email와 연결됨
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		//전체 출력
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String value = req.getParameter("select").toUpperCase();
 		resp.setContentType("text/html;charset=UTF-8");
 		EmpDAO dao = new EmpDAO();
-		List<Employee> list = dao.getEmpList();
+		List<Employee> list =dao.selectEmail(value);
 		
 		PrintWriter out = resp.getWriter();
-		out.print("<table border ='1'>");
+		out.print("<table border = '1'>");
 		out.print("<thead><tr><th>사원번호</th><th>이름</th><th>이메일</th><th>입사일</th><th>급여</th><th>직무</th></tr></thead>");
 		out.print("<tbody>");
 		for(Employee emp : list) {
@@ -38,5 +38,7 @@ public class EmpListServlet extends HttpServlet {
 		}
 		out.print("</tbody>");
 		out.print("</table>");
+		
 	}
+	
 }
