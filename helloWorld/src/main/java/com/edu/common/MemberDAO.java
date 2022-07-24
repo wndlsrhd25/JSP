@@ -18,8 +18,7 @@ public class MemberDAO extends DAO {
 				Member meb = new Member();
 				meb.setMemberId(rs.getString("member_id"));
 				meb.setMemberRole(rs.getInt("member_role"));
-				int role = 
-				if()
+			
 
 				list.add(meb);
 			}
