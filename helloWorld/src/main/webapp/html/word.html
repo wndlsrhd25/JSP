@@ -102,15 +102,15 @@
       }
 
       console.log(show);
-      document.querySelector("#show>span:nth-child(2)").style.display = "none";
+      // document.querySelector("#show>span:nth-child(2)").style.display = "none";
 
       let remove = document.querySelector("#userInput");
       //userInput : change
       remove.addEventListener("change", deleteWord);
 
       function deleteWord() {
-        let sps = document.querySelectorAll("span");
-        for (let s of sps) {
+        let word = document.querySelectorAll("span");
+        for (let s of word) {
           if (s.innerText == remove.value) {
             s.remove();
             remove.value = "";
