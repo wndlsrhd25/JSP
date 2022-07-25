@@ -3,6 +3,7 @@ package com.tst.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ public class LogInOutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=utf-8");
 		PrintWriter out = resp.getWriter();
-
+		
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
 
@@ -32,6 +33,10 @@ public class LogInOutServlet extends HttpServlet {
 			 //에서 아이디를 입력하면
 			session.setAttribute("id", id);
 			out.print("로그인을 완료했습니다");
+//			RequestDispatcher rd = req.getRequestDispatcher("jsp/addBoard.jsp");
+//	    	rd.forward(req, resp);
+			resp.sendRedirect("jsp/addBoard.jsp");
+			
 			
 		} else {
 			out.print("현재 로그인 중입니다");

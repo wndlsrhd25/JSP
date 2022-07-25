@@ -25,6 +25,7 @@ public class EmployeeSearchServlet extends HttpServlet{
 		req.setAttribute("data", list);
 
 		RequestDispatcher rd = req.getRequestDispatcher("empResult.jsp");
+		//속성값을 넘기는것
 		rd.forward(req,resp);
 	}
 

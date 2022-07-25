@@ -31,7 +31,7 @@
 			%>
 
 			<tr>
-				<td><a href ="boardDetail.jsp?id=<%=vo.getBoardId() %>"><%= vo.getBoardId() %></a></td>
+				<td><a href ="boardDetail.jsp?id=<%= vo.getBoardId() %>"><%= vo.getBoardId() %></a></td>
 				<td><%= vo.getTitle() %></td>
 				<td><%= vo.getWriter() %></td>
 				<td><%= vo.getCreateDate() %></td>

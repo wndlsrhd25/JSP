@@ -3,13 +3,13 @@ package user;
 
 public class UserDAO extends DAO{
 
-	
-	public int login(String userID, String userPassword) {
-		String SQL = "SELECT userPassword FROM USERS WHERE userID =?";
+				
+	public int login(String userId, String userPassword) {
+		String SQL = "SELECT user_password FROM USERS WHERE user_id =?";
 		connect();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, userID);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -32,11 +32,12 @@ public class UserDAO extends DAO{
 		connect();
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserID());
+			pstmt.setString(1, user.getUserId());
 			pstmt.setString(2, user.getUserPassword());
 			pstmt.setString(3, user.getUserName());
 			pstmt.setString(4, user.getUserGender());
 			pstmt.setString(5, user.getUserEmail());
+			
 		return pstmt.executeUpdate();
 		
 		} catch (Exception e) {
@@ -46,5 +47,5 @@ public class UserDAO extends DAO{
 		}
 		return -1; //데이터베이스 오류
 	}
-
+	
 }

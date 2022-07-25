@@ -79,7 +79,7 @@ public class BoardDAO extends DAO{
 				vo.setCreateDate(rs.getString("create_date"));
 				vo.setContent(rs.getString("content"));
 				vo.setWriter(rs.getString("writer"));
-				vo.setBoardId(rs.getInt("cnt"));						
+				vo.setCnt(rs.getInt("cnt"));						
 				
 				//카운트 증가 
 //				setCnt(boardNo);
