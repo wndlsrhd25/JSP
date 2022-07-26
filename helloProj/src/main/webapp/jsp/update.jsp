@@ -6,7 +6,6 @@
     <%
  
     int id = Integer.parseInt(request.getParameter("bid"));
-
     String title = request.getParameter("btitle");
     String content = request.getParameter("bcontent");
     

@@ -1,5 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="com.tst.comment.CommentDAO"%>
+<%@page import="com.tst.comment.CommentVO"%>
 <%@page import="com.tst.board.BoardVO"%>
 <%@page import="com.tst.board.BoardDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,12 +22,15 @@
 	BoardDAO dao = new BoardDAO();
 	BoardVO vo = dao.getBoard(bno);
 	
+	
+
+	
 	//if문을 돌려
 	dao.setCnt(bno);
 %>
 <!-- 글번호, 제목, 내용, 작성자, 작성일자, 조회수 -->
 
-<table border='1'>
+    <table border='1'>
 		
 			<tr><th>글번호</th><td><%= vo.getBoardId() %></td></tr>
 			<tr><th>제목</th><td><%= vo.getTitle() %></td></tr>
@@ -35,6 +42,14 @@
 		
 		</table>
 		
+ <% 
+
+
+ int bnum = vo.getBoardId();
+   session.setAttribute("boardId", bnum);// "bnum"을 키로 글번호 값을 저장       
+ 
+%>		
+		
 		<!-- bno를 넘길거임 -->
 		
 		<%	
@@ -44,6 +59,7 @@
 		<br><button onclick="location.href='boardList.jsp'">글 목록으로</button>
 		<button onclick="location.href='updateForm.jsp?bno=<%= vo.getBoardId() %>'">수정</button>
 		<button onclick="del()">삭제</button>
+		<button onclick="location.href='addComment.jsp'">댓글</button>
 		<%
 		} else {		
 		%>
@@ -51,7 +67,29 @@
 		<%
 		}
 		%>
-		
+            
+    
+    
+    <%
+    
+    CommentDAO cdao = new CommentDAO();
+    List<CommentVO> list = cdao.commentList();  
+    for(CommentVO cvo: list){
+    %>
+<table border='1'>
+            <tr>
+                <td><a href="boardDetail.jsp?id=<%=vo.getBoardId()%>"><%=vo.getBoardId()%></a></td>
+                <td><%=cvo.getCommentId()%></td>
+                <td><%=cvo.getCommentContent()%></td>
+                <td><%=cvo.getUserId()%></td>
+                <td><%=cvo.getCommentDate()%></td>
+
+            </tr>
+            <%
+            }
+            %>
+        
+ </table>
 	<script>
 		function del() {
 			let con_test = confirm("정말 삭제하시겠습니까");
