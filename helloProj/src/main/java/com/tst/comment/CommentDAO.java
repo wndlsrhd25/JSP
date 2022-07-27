@@ -18,10 +18,8 @@ public class CommentDAO extends DAO {
 		pstmt = conn.prepareStatement(sql);
 
 		pstmt.setInt(1, vo.getBoardId());
-		pstmt.setInt(2, vo.getCommentId());
-		pstmt.setString(3, vo.getCommentContent());
-		pstmt.setString(4, vo.getUserId());
-		pstmt.setString(5, vo.getCommentDate());
+		pstmt.setString(2, vo.getCommentContent());
+		pstmt.setString(3, vo.getUserId());
 
 		int rs = pstmt.executeUpdate();
 		System.out.println(rs + "건 댓글 입력");

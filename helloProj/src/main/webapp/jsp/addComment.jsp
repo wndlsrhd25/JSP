@@ -16,6 +16,7 @@
     글번호 : <input type="text" name="bID" value =<%=bnum %> readonly><br>
     댓글내용 : <textarea name="content" cols="30" rows="3"></textarea><br>
     작성자 : <input type="text" name="writer" value =<%=user %> readonly><br>
+    
     <input type="submit" value="등록">
     
 

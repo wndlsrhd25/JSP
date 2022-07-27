@@ -13,21 +13,19 @@
 <title>boardDetail.jsp</title>
 </head>
 <body>
+
 <%
 	// 파라미터를 읽어서 BoardDAO에서 한건 조회기능을 사용해서.
 	// 화면에 출력하도록 구현하세요
-	
 	int bno = Integer.parseInt(request.getParameter("id"));
 
 	BoardDAO dao = new BoardDAO();
 	BoardVO vo = dao.getBoard(bno);
-	
-	
 
-	
 	//if문을 돌려
 	dao.setCnt(bno);
 %>
+
 <!-- 글번호, 제목, 내용, 작성자, 작성일자, 조회수 -->
 
     <table border='1'>
