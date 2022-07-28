@@ -22,6 +22,7 @@ public class MemberService {
 		dao.insertMember(vo);
 	}
 
+	
 	//회원목록
 	public List<MemberVO> memberList(){
 		return dao.getList();
