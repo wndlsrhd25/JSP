@@ -5,7 +5,7 @@ public class UserDAO extends DAO{
 
 				
 	public int login(String userId, String userPassword) {
-		String SQL = "SELECT user_password FROM BBS_USERS WHERE user_id =?";
+		String SQL = "SELECT user_password FROM USERS WHERE user_id =?";
 		connect();
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -28,7 +28,7 @@ public class UserDAO extends DAO{
 	}
 	
 	public int join(User user) {
-		String SQL ="INSERT INTO BBS_USERS VALUES (?,?,?,?,?)";
+		String SQL ="INSERT INTO USERS VALUES (?,?,?,?,?)";
 		connect();
 		try {
 			pstmt = conn.prepareStatement(SQL);

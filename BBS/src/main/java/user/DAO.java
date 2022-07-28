@@ -15,8 +15,8 @@ public class DAO {
 	//ORACLE DB 정보
 		private String jdbcDriver ="oracle.jdbc.driver.OracleDriver";
 		private String oracleUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		private String connectedId ="hr";
-		private String connectedPwd ="hr";
+		private String connectedId ="crime";
+		private String connectedPwd ="crime";
 		
 		//공통으로 사용되는 필드 - 
 		protected Connection conn;

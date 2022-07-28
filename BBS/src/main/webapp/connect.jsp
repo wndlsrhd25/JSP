@@ -12,8 +12,8 @@
 		Connection conn = null;
 		try{
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "hr";
-			String password = "hr";
+			String user = "crime";
+			String password = "crime";
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password); // url, user, password를 변수로 처리해도됨
