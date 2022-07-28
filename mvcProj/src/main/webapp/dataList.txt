@@ -1,0 +1,6 @@
+[
+{"id":"user1","name":"유저1","pass":"1111","mail":"user1@email.com"},
+{"id":"user2","name":"유저2","pass":"2222","mail":"user2@email.com"},
+{"id":"user3","name":"유저3","pass":"3333","mail":"user3@email.com"},
+{"id":"user4","name":"유저4","pass":"4444","mail":"user4@email.com"}
+]

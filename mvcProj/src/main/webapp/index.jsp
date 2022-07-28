@@ -9,10 +9,12 @@
 <body>
 
 <h3>첫페이지 </h3>
-<a href="memberView/memberInsert.jsp">회원등록</a><br>
-<a href="memberView/memberSearch.jsp">회원검색</a><br>
-<a href="memberView/memberUpdate.jsp">회원수정</a><br>
-<a href="memberList.do">회원목록</a>
+
+<button onclick="location.href='memberList.do'">회원목록</button>
+<button onclick="location.href='memberView/memberSearch.jsp'">회원검색</button>
+<button onclick="location.href='memberView/memberInsert.jsp'">회원등록</button><br>
+<button onclick="location.href='memberView/memberUpdate.jsp'">회원수정</button>
+<button onclick="location.href='memberView/memberDelete.jsp'">회원삭제</button><br>
 
 </body>
 </html>

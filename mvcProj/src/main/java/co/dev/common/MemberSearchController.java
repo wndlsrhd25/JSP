@@ -21,6 +21,8 @@ public class MemberSearchController implements Controller {
 
 			}else if (job.equals("update")) {
 				Utils.forward(req, resp, "memberView/memberUpdate.jsp");
+			} else if (job.equals("delete")) {
+				Utils.forward(req, resp, "memberView/memberDelete.jsp");
 			}
 			return;
 		}
@@ -41,6 +43,8 @@ public class MemberSearchController implements Controller {
 				Utils.forward(req, resp, "memberResult/memberSearchOutput.jsp");
 			} else if (job.equals("update")) {
 				Utils.forward(req, resp, "memberView/memberUpdate.jsp");
+			} else if (job.equals("delete")) {
+				Utils.forward(req, resp, "memberView/memberDelete.jsp");
 			}
 		}
 	}

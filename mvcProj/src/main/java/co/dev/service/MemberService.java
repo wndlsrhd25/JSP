@@ -32,4 +32,13 @@ public class MemberService {
 		return dao.searchMember(id);
 	}
 	
+	//회원정보수정
+	public void modifyMember(MemberVO vo) {
+		dao.UpdateMember(vo);
+	}
+	
+	//회원정보삭제
+	public void eraseMember(String id) {
+		dao.DeleteMember(id);
+	}
 }

@@ -1,30 +1,28 @@
 package co.dev.common;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.dev.service.MemberService;
 import co.dev.vo.MemberVO;
 
-public class MemberListController implements Controller {
+public class MemberDeleteController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		
+
+		//파라메터
+		String id = req.getParameter("id");
+	
+
 		
 		MemberService service = MemberService.getInstance();
+		service.eraseMember(id);
 		
-		//가져와서오는것
-		List<MemberVO> vo = service.memberList();
+		//공유 : vo
+		req.setAttribute("member", id);
 		
-		//값을 집어넣어서
-		req.setAttribute("list", vo);
-		
-		//보내줘야함
-		Utils.forward(req, resp, "memberResult/memberListOutput.jsp");
-		
+		Utils.forward(req, resp, "memberResult/memberDeleteOutput.jsp");
 	}
 
 }
