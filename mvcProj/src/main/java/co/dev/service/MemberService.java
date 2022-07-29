@@ -39,7 +39,7 @@ public class MemberService {
 	}
 	
 	//회원정보삭제
-	public void eraseMember(String id) {
-		dao.DeleteMember(id);
+	public boolean eraseMember(String id) {
+		return dao.DeleteMember(id);
 	}
 }

@@ -142,7 +142,7 @@ public class MemberDAO {
 		}
 	}
 	
-	public void DeleteMember(String id) {
+	public boolean DeleteMember(String id) {
 		String sql="delete member where id=?";
 		connect();
 		
@@ -152,12 +152,18 @@ public class MemberDAO {
 			
 			int r = pstmt.executeUpdate();
 			System.out.println(r+"건 삭제");
+		
+			if(r>0) {
+			return true;
+			} 
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}finally {
 			disconnect();
 		}
+		return false;
 		
 	}
 	
