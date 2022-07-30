@@ -1,4 +1,4 @@
-package user;
+package bbs;
 
 import java.io.FileInputStream;
 import java.io.IOException;
