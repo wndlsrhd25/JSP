@@ -5,8 +5,7 @@ public class MemberService {
 	
 	//싱글톤
 	private static MemberService instance = new MemberService();
-	
-	
+
 	private MemberService() {
 		
 	}
@@ -16,13 +15,16 @@ public class MemberService {
 		return instance;
 	}
 	
-	MemberDAO dao = new MemberDAO();
+	MemberDAO mdao = new MemberDAO();
 
-	// 입력과 삭제 or 입력과 수정을 함께 구현가능함
+
+	//회원가
 	public void memberAdd(MemberVO vo) {
-		dao.insertMember(vo);
+		mdao.insertMember(vo);
 	
 	}
+	
+	
 
 
 }
