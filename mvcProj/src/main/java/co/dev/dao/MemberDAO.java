@@ -142,6 +142,7 @@ public class MemberDAO {
 		}
 	}
 	
+	//삭제
 	public boolean DeleteMember(String id) {
 		String sql="delete member where id=?";
 		connect();

@@ -3,13 +3,16 @@ package co.dev.service;
 import java.util.List;
 
 import co.dev.dao.MemberDAO;
+import co.dev.dao.MemberDAOMybatis;
 import co.dev.vo.MemberVO;
 
 //비지니스 처리
 public class MemberService {
 	
 	private static MemberService instance = new MemberService();
-	MemberDAO dao = new MemberDAO();
+	//MemberDAO dao = new MemberDAO(); jdbc 쿼리 처리
+	
+	MemberDAOMybatis dao = MemberDAOMybatis.getInstance(); //Mybatis 처리
 	
 	private MemberService() {}
 	public static MemberService getInstance() {

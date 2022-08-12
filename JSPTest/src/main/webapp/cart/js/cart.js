@@ -41,7 +41,7 @@ function cartList(result){
 }
 
 
-function changePnum(no) {
+function changePNum(no) {
 
    let currentItem = event.target; //이벤트를 받는 대상 가져옴
 

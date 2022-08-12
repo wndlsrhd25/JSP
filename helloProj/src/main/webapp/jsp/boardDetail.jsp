@@ -74,6 +74,7 @@
     List<CommentVO> list = cdao.commentList();  
     for(CommentVO cvo: list){
     %>
+    
 <table border='1'>
             <tr>
                 <td><a href="boardDetail.jsp?id=<%=vo.getBoardId()%>"><%=vo.getBoardId()%></a></td>
